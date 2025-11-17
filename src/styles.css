@@ -1,0 +1,69 @@
+body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial; 
+    padding: 12px; 
+}
+
+.dt-root { 
+    border: 1px solid #eee; 
+    padding:12px; 
+    border-radius:8px;
+}
+
+.dt-toolbar { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    gap:12px;
+}
+
+.dt-search input { 
+    padding:6px 8px; 
+    border-radius:6px; 
+    border:1px solid #ccc; 
+}
+
+.dt-main { 
+    display:flex; 
+    gap:12px; 
+    margin-top:12px; 
+}
+
+.dt-aside { 
+    width:260px; 
+}
+
+.dt-table-area { 
+    flex:1; 
+    overflow:auto; 
+}
+
+.dt-table { 
+    width:100%; 
+    border-collapse:collapse; 
+    min-width:700px; 
+}
+
+.dt-table th, .dt-table td { 
+    padding:8px 10px; 
+    border-bottom:1px solid #f0f0f0; 
+    text-align:left; 
+}
+.dt-table thead th { 
+    background:#fafafa; 
+    position:sticky; 
+    top:0; 
+}
+.dt-filters .filter-row { 
+    margin-bottom:10px; 
+}
+.dt-footer { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    margin-top:12px; 
+}
+.loading, .error { 
+    padding:12px; 
+    background:#fff4e5; 
+    border-radius:6px; 
+}
