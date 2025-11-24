@@ -6,22 +6,18 @@ import TableBody from './TableBody';
 import Filters from './Filters';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
-import ColumnToggle from './ColumnToggle';
 import Loading from './Shared/Loading';
 import ErrorBox from './Shared/ErrorBox';
 import { exportToCsv } from '../../utils/csvExport';
 import './DataTable.css';
 
-
 const CSV_URL = 'https://raw.githubusercontent.com/venelinkochev/bin-list-data/master/bin-list-data.csv';
-
 
 // Sample config (you can pass config as prop)
 const SAMPLE_CONFIG = {
     columns: {},
     defaults: { searchable: false, filterable: false, sortable: false },
 };
-
 
 export default function DataTable({ csvUrl = CSV_URL, config = SAMPLE_CONFIG }) {
     const [loading, setLoading] = useState(false);
@@ -36,7 +32,6 @@ export default function DataTable({ csvUrl = CSV_URL, config = SAMPLE_CONFIG }) 
     const [sort, setSort] = useState({ column: null, direction: null });
     const [pageSize, setPageSize] = useState(25);
     const [page, setPage] = useState(1);
-
 
     useEffect(() => {
         let cancelled = false;
@@ -76,7 +71,6 @@ export default function DataTable({ csvUrl = CSV_URL, config = SAMPLE_CONFIG }) 
         return cc;
     }, [headers, config]);
 
-
     // processing: search, filters, sort
     const processed = useMemo(() => {
         let data = rows.slice();
@@ -111,7 +105,6 @@ export default function DataTable({ csvUrl = CSV_URL, config = SAMPLE_CONFIG }) 
             return true;
         }));
 
-
         // sort
         if (sort.column) {
             const col = sort.column;
@@ -135,7 +128,7 @@ export default function DataTable({ csvUrl = CSV_URL, config = SAMPLE_CONFIG }) 
     // pagination
     const total = processed.length;
     const totalPages = Math.max(1, Math.ceil(total / pageSize));
-    useEffect(() => { if (page > totalPages) setPage(1); }, [totalPages]);
+    useEffect(() => { if (page > totalPages) setPage(1); }, [page, totalPages]);
     const pageRows = useMemo(() => {
         const start = (page - 1) * pageSize; return processed.slice(start, start + pageSize);
     }, [processed, page, pageSize]);
